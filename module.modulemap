@@ -1,5 +1,5 @@
 module OPUS [system] {
   header "/usr/local/Cellar/opus/1.1.3/include/opus.h"
-  link "OPUS"
+  link "opus"
   export *
 }
