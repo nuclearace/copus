@@ -1,5 +1,5 @@
 module COPUS [system] {
-  header "/usr/local/include/opus/opus.h"
+  header "shim.h"
   link "opus"
   export *
 }
