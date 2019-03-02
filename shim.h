@@ -4,12 +4,12 @@
 #include <opus.h>
 
 #define OPUS_SHIM_GENERIC_CTL0(macroname, funcname) \
-inline int opus_encoder_##funcname(OpusEncoder *st) {\
+static inline int opus_encoder_##funcname(OpusEncoder *st) {\
 	return opus_encoder_ctl(st, OPUS_##macroname);\
 }
 
 #define OPUS_SHIM_GENERIC_CTL1(macroname, funcname, vartype, varname) \
-inline int opus_encoder_##funcname(OpusEncoder *st, vartype varname) {\
+static inline int opus_encoder_##funcname(OpusEncoder *st, vartype varname) {\
 	return opus_encoder_ctl(st, OPUS_##macroname(varname));\
 }
 
@@ -18,12 +18,12 @@ inline int opus_encoder_##funcname(OpusEncoder *st, vartype varname) {\
 #include "ctl_shim.h"
 
 #define OPUS_SHIM_GENERIC_CTL0(macroname, funcname) \
-inline int opus_decoder_##funcname(OpusDecoder *st) {\
+static inline int opus_decoder_##funcname(OpusDecoder *st) {\
 	return opus_decoder_ctl(st, OPUS_##macroname);\
 }
 
 #define OPUS_SHIM_GENERIC_CTL1(macroname, funcname, vartype, varname) \
-inline int opus_decoder_##funcname(OpusDecoder *st, vartype varname) {\
+static inline int opus_decoder_##funcname(OpusDecoder *st, vartype varname) {\
 	return opus_decoder_ctl(st, OPUS_##macroname(varname));\
 }
 
