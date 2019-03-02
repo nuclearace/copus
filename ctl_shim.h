@@ -2,6 +2,18 @@
 // GENERIC are for both decoders and encoders, ENCODER is for encoders only.  0/1 is the number of arguments
 // Arguments are name of opus macro minus the OPUS_ prefix, the same name lowercased, the type of the argument, and the argument variable name
 
+#ifndef OPUS_SHIM_GENERIC_CTL0
+#  error "Must define OPUS_SHIM_GENERIC_CTL0(macroname, funcname) before including this file."
+#endif
+
+#ifndef OPUS_SHIM_GENERIC_CTL1
+#  error "Must define OPUS_SHIM_GENERIC_CTL1(macroname, funcname, vartype, varname) before including this file."
+#endif
+
+#ifndef OPUS_SHIM_ENCODER_CTL1
+#  error "Must define OPUS_SHIM_ENCODER_CTL1(macroname, funcname, vartype, varname) before including this file."
+#endif
+
 OPUS_SHIM_GENERIC_CTL0(RESET_STATE, reset_state)
 OPUS_SHIM_GENERIC_CTL1(GET_FINAL_RANGE, get_final_range, opus_uint32*, range)
 OPUS_SHIM_GENERIC_CTL1(GET_BANDWIDTH, get_bandwidth, opus_int32*, bandwidth)
