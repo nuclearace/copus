@@ -15,6 +15,8 @@ static inline int opus_encoder_##funcname(OpusEncoder *st, vartype varname) {\
 
 #define OPUS_SHIM_ENCODER_CTL1(macroname, funcname, vartype, varname) OPUS_SHIM_GENERIC_CTL1(macroname, funcname, vartype, varname)
 
+#define OPUS_SHIM_DECODER_CTL1(macroname, funcname, vartype, varname)
+
 #include "ctl_shim.h"
 
 #define OPUS_SHIM_GENERIC_CTL0(macroname, funcname) \
@@ -28,6 +30,8 @@ static inline int opus_decoder_##funcname(OpusDecoder *st, vartype varname) {\
 }
 
 #define OPUS_SHIM_ENCODER_CTL1(macroname, funcname, vartype, varname)
+
+#define OPUS_SHIM_DECODER_CTL1(macroname, funcname, vartype, varname) OPUS_SHIM_GENERIC_CTL1(macroname, funcname, vartype, varname)
 
 #include "ctl_shim.h"
 

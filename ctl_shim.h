@@ -1,5 +1,5 @@
-// Define macros for OPUS_SHIM_GENERIC_CTL0, OPUS_SHIM_GENERIC_CTL1, and OPUS_SHIM_ENCODER_CTL1 and then include this file
-// GENERIC are for both decoders and encoders, ENCODER is for encoders only.  0/1 is the number of arguments
+// Define macros for OPUS_SHIM_GENERIC_CTL0, OPUS_SHIM_GENERIC_CTL1, OPUS_SHIM_ENCODER_CTL1, and OPUS_SHIM_DECODER_CTL1 and then include this file
+// GENERIC are for both decoders and encoders, ENCODER is for encoders only, DECODER is for decoders only.  0/1 is the number of arguments
 // Arguments are name of opus macro minus the OPUS_ prefix, the same name lowercased, the type of the argument, and the argument variable name
 
 #ifndef OPUS_SHIM_GENERIC_CTL0
@@ -12,6 +12,10 @@
 
 #ifndef OPUS_SHIM_ENCODER_CTL1
 #  error "Must define OPUS_SHIM_ENCODER_CTL1(macroname, funcname, vartype, varname) before including this file."
+#endif
+
+#ifndef OPUS_SHIM_DECODER_CTL1
+#  error "Must define OPUS_SHIM_DECODER_CTL1(macroname, funcname, vartype, varname) before including this file."
 #endif
 
 OPUS_SHIM_GENERIC_CTL0(RESET_STATE, reset_state)
@@ -50,11 +54,12 @@ OPUS_SHIM_ENCODER_CTL1(SET_EXPERT_FRAME_DURATION, set_expert_frame_duration, opu
 OPUS_SHIM_ENCODER_CTL1(GET_EXPERT_FRAME_DURATION, get_expert_frame_duration, opus_int32*, duration)
 OPUS_SHIM_ENCODER_CTL1(SET_PREDICTION_DISABLED, set_prediction_disabled, opus_int32, predictionDisabled)
 OPUS_SHIM_ENCODER_CTL1(GET_PREDICTION_DISABLED, get_prediction_disabled, opus_int32*, predictionDisabled)
-OPUS_SHIM_ENCODER_CTL1(SET_GAIN, set_gain, opus_int32, gain)
-OPUS_SHIM_ENCODER_CTL1(GET_GAIN, get_gain, opus_int32*, gain)
-OPUS_SHIM_ENCODER_CTL1(GET_LAST_PACKET_DURATION, get_last_packet_duration, opus_int32*, duration)
-OPUS_SHIM_ENCODER_CTL1(GET_PITCH, get_pitch, opus_int32*, pitch)
+OPUS_SHIM_DECODER_CTL1(SET_GAIN, set_gain, opus_int32, gain)
+OPUS_SHIM_DECODER_CTL1(GET_GAIN, get_gain, opus_int32*, gain)
+OPUS_SHIM_DECODER_CTL1(GET_LAST_PACKET_DURATION, get_last_packet_duration, opus_int32*, duration)
+OPUS_SHIM_DECODER_CTL1(GET_PITCH, get_pitch, opus_int32*, pitch)
 
 #undef OPUS_SHIM_GENERIC_CTL0
 #undef OPUS_SHIM_GENERIC_CTL1
 #undef OPUS_SHIM_ENCODER_CTL1
+#undef OPUS_SHIM_DECODER_CTL1
